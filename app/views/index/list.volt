@@ -296,10 +296,7 @@ body{
 				<div>
 					<div class="infoImage fLeft"><img src="../img/20150605/aesthetics_4-1.jpg" /></div>
 					<div class="infoContent fLeft">
-						
-							<a href="/infos/index/<?php echo $v['uid']; ?>">	
-								<?php echo $v['name'];?>
-							</a>
+							{{ link_to('infos/index/'~ v['uid'],v['name'] ) }}
 							<label class="fRight">
 								<?php $types=explode(';',$v['detail_info']['tag']); 
 								foreach($types as $key=>$val){

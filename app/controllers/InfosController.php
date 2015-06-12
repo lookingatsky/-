@@ -25,7 +25,7 @@ class InfosController extends ControllerBase
 			 $this->flash->error("请不要乱操作！");
 			 return $this->forward("index/index");
 		}else{
-			$getInfos = BaiduApiInfo::FindFirst("uid = '".$id."'");\
+			$getInfos = BaiduApiInfo::FindFirst("uid = '".$id."'");
 			$this->view->infos = $getInfos;			
 		}	
     }
