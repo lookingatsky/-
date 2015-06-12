@@ -30,9 +30,7 @@ class InfosController extends ControllerBase
 		}	
     }
 
-    /**
-     * Search products based on current criteria
-     */
+
     public function searchAction()
     {
         $numberPage = 1;
