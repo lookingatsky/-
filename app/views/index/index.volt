@@ -3,7 +3,7 @@
 <style type="text/css">
 .viconFrame{
 	width:100%;
-	background:url('/img/20150605/kv.jpg');
+	background:url('../img/20150605/kv.jpg');
 	height:516px;
 	background-repeat:no-repeat;
 	font-family:"微软雅黑";

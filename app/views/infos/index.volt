@@ -69,11 +69,11 @@ body{
 	width:85px;
 	position:relative;
 	top:8px;
-	background:rgba(0, 0, 0, 0) url("/img/bootstrap/rating.png") no-repeat scroll 0px -141px;
+	background:rgba(0, 0, 0, 0) url("../img/bootstrap/rating.png") no-repeat scroll 0px -141px;
 }
 .rating{
 	height:16px;
-	background:rgba(0, 0, 0, 0) url("/img/bootstrap/rating.png") no-repeat scroll 0px 0px;
+	background:rgba(0, 0, 0, 0) url("../img/bootstrap/rating.png") no-repeat scroll 0px 0px;
 }
 .fRed{
 	color:#ff0000;
@@ -86,14 +86,14 @@ body{
 	top:3px;
 	width:24px;
 	height:24px;
-	background:rgba(0, 0, 0, 0) url("/img/bootstrap/bg.png") no-repeat scroll 5px -902px;
+	background:rgba(0, 0, 0, 0) url("../img/bootstrap/bg.png") no-repeat scroll 5px -902px;
 }
 .phoneIcon{
 	position:relative;
 	top:3px;
 	width:37px;
 	height:37px;
-	background:rgba(0, 0, 0, 0) url("/img/bootstrap/bg.png") no-repeat scroll -92px -106px;	
+	background:rgba(0, 0, 0, 0) url("../img/bootstrap/bg.png") no-repeat scroll -92px -106px;	
 }
 .addressContent{
 	width:264px;
@@ -121,7 +121,7 @@ body{
 			<div class="container-fluid">
 				<div class="col-md-8">
 					<a href="#" class="thumbnail">
-						<img src="/img/20150605/aesthetics_1.jpg" alt="{{ infos.name }}">
+						<img src="../img/20150605/aesthetics_1.jpg" alt="{{ infos.name }}">
 					</a>
 				</div>
 				<div class="infosList fRight">
@@ -159,22 +159,22 @@ body{
 			<div class="container-fluid">
 				<div class="col-md-2 col-md-offset-0">
 					<a class="thumbnail">
-						<img src="/img/20150605/aesthetics_1-1.jpg" alt="{{ infos.name }}">
+						<img src="../img/20150605/aesthetics_1-1.jpg" alt="{{ infos.name }}">
 					</a>
 				</div>
 				<div class="col-md-2 col-md-offset-0">
 					<a class="thumbnail">
-						<img src="/img/20150605/aesthetics_2-1.jpg" alt="{{ infos.name }}">
+						<img src="../img/20150605/aesthetics_2-1.jpg" alt="{{ infos.name }}">
 					</a>
 				</div>
 				<div class="col-md-2 col-md-offset-0">
 					<a class="thumbnail">
-						<img src="/img/20150605/aesthetics_3-1.jpg" alt="{{ infos.name }}">
+						<img src="../img/20150605/aesthetics_3-1.jpg" alt="{{ infos.name }}">
 					</a>
 				</div>
 				<div class="col-md-2 col-md-offset-0">
 					<a class="thumbnail">
-						<img src="/img/20150605/aesthetics_4-1.jpg" alt="{{ infos.name }}">
+						<img src="../img/20150605/aesthetics_4-1.jpg" alt="{{ infos.name }}">
 					</a>
 				</div>
 			</div>

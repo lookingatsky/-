@@ -5,7 +5,7 @@ body{
 	background:#f7f7f7;
 }
 .test_p>li{
-	background:rgba(0, 0, 0, 0) url("/img/bootstrap/bg.png") no-repeat scroll -105px -957px;
+	background:rgba(0, 0, 0, 0) url("../img/bootstrap/bg.png") no-repeat scroll -105px -957px;
 	text-indent:24px;
 }
 .test_p>li:hover{
@@ -110,7 +110,7 @@ body{
 	height:24px;
 	margin:0;
 	padding:0;
-	background:rgba(0, 0, 0, 0) url("/img/bootstrap/bg.png") no-repeat scroll 5px -902px;
+	background:rgba(0, 0, 0, 0) url("../img/bootstrap/bg.png") no-repeat scroll 5px -902px;
 }
 .infoContent>p>label:nth-of-type(2){
 	line-height:24px;
@@ -132,7 +132,7 @@ body{
 .telephone>label:nth-of-type(1){
 	width:37px;
 	height:37px;
-	background:rgba(0, 0, 0, 0) url("/img/bootstrap/bg.png") no-repeat scroll -92px -106px;
+	background:rgba(0, 0, 0, 0) url("../img/bootstrap/bg.png") no-repeat scroll -92px -106px;
 }
 .telephone>label:nth-of-type(2){
 	height:37px;
@@ -175,7 +175,7 @@ body{
 	border:1px solid #ddd;
 	text-align:center;
 	cursor:pointer;
-	background:rgba(0, 0, 0, 0) url("/img/bootstrap/bg.png") no-repeat scroll -103px -844px;
+	background:rgba(0, 0, 0, 0) url("../img/bootstrap/bg.png") no-repeat scroll -103px -844px;
 }
 .viconFrameInputType{
 	width:90%;
@@ -198,7 +198,7 @@ body{
 	font-weight:100;
 	color:#000;
 	cursor:pointer;
-	background:rgba(0, 0, 0, 0) url("/img/bootstrap/bg2.png") no-repeat scroll -347px -1162px;	
+	background:rgba(0, 0, 0, 0) url("../img/bootstrap/bg2.png") no-repeat scroll -347px -1162px;	
 }
 .viconFrameInputType input[type="checkbox"]{
 	visibility:hidden;
@@ -294,7 +294,7 @@ body{
 		<?php foreach($mapDatas['results'] as $k=>$v){ ?>		
 			<li>
 				<div>
-					<div class="infoImage fLeft"><img src="/img/20150605/aesthetics_4-1.jpg" /></div>
+					<div class="infoImage fLeft"><img src="../img/20150605/aesthetics_4-1.jpg" /></div>
 					<div class="infoContent fLeft">
 						
 							<a href="/infos/index/<?php echo $v['uid']; ?>">	
