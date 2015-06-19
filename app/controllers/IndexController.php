@@ -55,7 +55,7 @@ class IndexController extends ControllerBase
 						}
 						$insertInfo->location_lng = $val['location']['lng'];
 						$insertInfo->location_lat = $val['location']['lat'];
-						
+						mysql_query("set names utf8");
 						if(!$insertInfo->save()){
 							foreach ($insertInfo->getMessages() as $message) {
 								$this->flash->error((string) $message);
