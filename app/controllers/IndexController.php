@@ -44,6 +44,7 @@ class IndexController extends ControllerBase
 					if(!isset($isInsert->uid) || $isInsert->uid == ''){
 						foreach($val as $key1 => $val1){
 							if(!is_array($val1)){
+								fb($val1);	
 								$insertInfo->$key1 = $val1;	
 							}elseif($key1 == 'detail_info'){
 								foreach($val1 as $key1_1 => $val1_1){
