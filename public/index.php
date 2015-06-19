@@ -6,7 +6,8 @@ use Phalcon\Config\Adapter\Ini as ConfigIni;
 
 //$_GET['_url'] = '/contact/send';
 //$_SERVER['REQUEST_METHOD'] = 'POST';
-include_once('/FirePHP/fb.php');
+include_once('./FirePHP/fb.php');
+fb(1111);
 try {
 
 	define('APP_PATH', realpath('..') . '/');
