@@ -5,24 +5,24 @@
 
     <div class="col-md-6">
         <div class="page-header">
-            <h2>Log In</h2>
+            <h4>登 录</h4>
         </div>
         {{ form('session/start', 'role': 'form') }}
             <fieldset>
                 <div class="form-group">
-                    <label for="email">Username/Email</label>
+                    <label for="email">邮箱/帐号</label>
                     <div class="controls">
                         {{ text_field('email', 'class': "form-control") }}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">密 码</label>
                     <div class="controls">
                         {{ password_field('password', 'class': "form-control") }}
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ submit_button('Login', 'class': 'btn btn-primary btn-large') }}
+                    {{ submit_button('登 录', 'class': 'btn btn-primary btn-large') }}
                 </div>
             </fieldset>
         </form>
@@ -31,18 +31,18 @@
     <div class="col-md-6">
 
         <div class="page-header">
-            <h2>Don't have an account yet?</h2>
+            <h4>还没有帐号?</h4>
         </div>
 
-        <p>Create an account offers the following advantages:</p>
+        <p>拥有帐号您也可以拥有以前几条:</p>
         <ul>
-            <li>Create, track and export your invoices online</li>
-            <li>Gain critical insights into how your business is doing</li>
-            <li>Stay informed about promotions and special packages</li>
+            <li>创建您的维肯小屋信息</li>
+            <li>创建商户信息</li>
+            <li>修改商户展示信息</li>
         </ul>
 
         <div class="clearfix center">
-            {{ link_to('register', 'Sign Up', 'class': 'btn btn-primary btn-large btn-success') }}
+            {{ link_to('register', '注 册', 'class': 'btn btn-primary btn-large btn-success') }}
         </div>
     </div>
 

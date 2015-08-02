@@ -18,7 +18,7 @@ class InvoicesController extends ControllerBase
     /**
      * Edit the active user profile
      *
-     */
+     */ 
     public function profileAction()
     {
         //Get session info
@@ -30,9 +30,11 @@ class InvoicesController extends ControllerBase
             return $this->_forward('index/index');
         }
 
-        if (!$this->request->isPost()) {
-            $this->tag->setDefault('name', $user->name);
-            $this->tag->setDefault('email', $user->email);
+        if (!$this->request->isPost()) {				
+			$this->view->setVar("id", $auth['id']);	
+			$this->view->setVar("email", $user->email);
+			$this->view->setVar("username",$user->username);
+			$this->view->setVar("imgSrc",$user->imgSrc);
         } else {
 
             $name = $this->request->getPost('name', array('string', 'striptags'));
@@ -40,13 +42,21 @@ class InvoicesController extends ControllerBase
 
             $user->name = $name;
             $user->email = $email;
-            if ($user->save() == false) {
+            if($user->save() == false) {
                 foreach ($user->getMessages() as $message) {
                     $this->flash->error((string) $message);
                 }
-            } else {
-                $this->flash->success('Your profile information was updated successfully');
+            }else{
+                $this->flash->success('您的信息更新完毕！');
             }
         }
     }
+	
+	public function changeimageAction(){
+		$this->view->disable();
+		$userId = $this->request->getPost('id');
+		$user = Users::findFirst($userId);
+		$user->imgSrc = $this->request->getPost('imgsrc');
+		$user->save();
+	}
 }

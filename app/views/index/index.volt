@@ -3,8 +3,8 @@
 <style type="text/css">
 .viconFrame{
 	width:100%;
-	background:url('../img/20150605/kv.jpg');
-	height:516px;
+	background:url('../img/bootstrap/saybg.jpg');
+	height:360px;
 	background-repeat:no-repeat;
 	font-family:"微软雅黑";
 }
@@ -17,21 +17,21 @@
 }
 .viconFrameInputBg{
 	width:900px;
-	height:400px;
+	height:200px;
 	background:#000;
 	position:relative;
 	top:50px;
 	margin:auto;
 	border-radius:10px;
-	filter:alpha(opacity=50);
-	-moz-opacity:0.5;
-	-khtml-opacity:0.5;
-	opacity:0.5; 
+	filter:alpha(opacity=70);
+	-moz-opacity:0.7;
+	-khtml-opacity:0.7;
+	opacity:0.7; 
 	z-index:0;
 }
 .viconFrameInput>h2{
 	position:relative;
-	top:30px;
+	top:230px;
 	left:50px;
 	color:#5bb75b;
 }
@@ -40,7 +40,7 @@
 	height:100xp;
 	position:relative;
 	left:350px;
-	top:30px;
+	top:230px;
 }
 .viconFrameInput>div:nth-of-type(2){
 	position:relative;
@@ -69,6 +69,7 @@
 	box-shadow:3px 3px 3px #000;
 }
 </style>
+
 {{ form('index/list','class':'mapForm','method':'post') }}
 	<div class="viconFrame">
 		<div class="viconFrameInputBg"></div>
@@ -85,3 +86,4 @@
     <p>{{ link_to('register', 'Try it for Free &raquo;', 'class': 'btn btn-primary btn-large btn-success') }}</p>
 </div>
 
+	

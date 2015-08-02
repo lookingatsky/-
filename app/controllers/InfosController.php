@@ -21,7 +21,8 @@ class InfosController extends ControllerBase
      */
     public function indexAction($id = 0)
     {
-		if($id == 0){
+		
+		if($id == ''){
 			 $this->flash->error("请不要乱操作！");
 			 return $this->forward("index/index");
 		}else{

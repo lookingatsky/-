@@ -12,7 +12,7 @@ class ControllerBase extends Controller
     }
 
     protected function forward($uri)
-    {
+    {	
         $uriParts = explode('/', $uri);
         $params = array_slice($uriParts, 2);
     	return $this->dispatcher->forward(

@@ -5,64 +5,66 @@ use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Password;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Email;
+use Phalcon\Mvc\Model\Validator\Uniqueness as UniquenessValidator;
+
 
 class RegisterForm extends Form
 {
 
     public function initialize($entity = null, $options = null)
     {
-        // Name
+        //姓名
         $name = new Text('name');
-        $name->setLabel('Your Full Name');
+        $name->setLabel('姓 名');
         $name->setFilters(array('striptags', 'string'));
         $name->addValidators(array(
             new PresenceOf(array(
-                'message' => 'Name is required'
+                'message' => '请输入您的姓名'
             ))
         ));
         $this->add($name);
 
-        // Name
+        //用户名
         $name = new Text('username');
-        $name->setLabel('Username');
+        $name->setLabel('用户名');
         $name->setFilters(array('alpha'));
         $name->addValidators(array(
             new PresenceOf(array(
-                'message' => 'Please enter your desired user name'
+                'message' => '请输入用户名'
             ))
         ));
         $this->add($name);
 
-        // Email
+        //邮箱
         $email = new Text('email');
-        $email->setLabel('E-Mail');
+        $email->setLabel('邮 箱');
         $email->setFilters('email');
         $email->addValidators(array(
             new PresenceOf(array(
-                'message' => 'E-mail is required'
+                'message' => '请输入邮箱'
             )),
             new Email(array(
-                'message' => 'E-mail is not valid'
+                'message' => '不是有效的邮箱'
             ))
         ));
         $this->add($email);
 
-        // Password
+        //密码
         $password = new Password('password');
-        $password->setLabel('Password');
+        $password->setLabel('密 码');
         $password->addValidators(array(
             new PresenceOf(array(
-                'message' => 'Password is required'
+                'message' => '请输入密码'
             ))
         ));
         $this->add($password);
 
-        // Confirm Password
+        //确认密码
         $repeatPassword = new Password('repeatPassword');
-        $repeatPassword->setLabel('Repeat Password');
+        $repeatPassword->setLabel('二次密码');
         $repeatPassword->addValidators(array(
             new PresenceOf(array(
-                'message' => 'Confirmation password is required'
+                'message' => '请再次输入密码'
             ))
         ));
         $this->add($repeatPassword);

@@ -38,31 +38,31 @@ class Elements extends Component
     );
 
     private $_tabs = array(
-        'Invoices' => array(
+        '清单' => array(
             'controller' => 'invoices',
             'action' => 'index',
             'any' => false
         ),
-        'Companies' => array(
+        '公司' => array(
             'controller' => 'companies',
             'action' => 'index',
             'any' => true
         ),
-        'Products' => array(
+        '产品' => array(
             'controller' => 'products',
-            'action' => 'index',
+            'action' => 'search',
             'any' => true
         ),
-        'Product Types' => array(
+        '产品类型' => array(
             'controller' => 'producttypes',
             'action' => 'index',
             'any' => true
         ),
-        'Your Profile' => array(
+        '账户信息' => array(
             'controller' => 'invoices',
             'action' => 'profile',
             'any' => false
-        )
+        )	
     );
 
     /**
@@ -76,7 +76,7 @@ class Elements extends Component
         $auth = $this->session->get('auth');
         if ($auth) {
             $this->_headerMenu['navbar-right']['session'] = array(
-                'caption' => 'Log Out',
+                'caption' => '退出',
                 'action' => 'end'
             );
         } else {

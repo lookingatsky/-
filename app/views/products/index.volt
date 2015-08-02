@@ -2,12 +2,12 @@
 {{ content() }}
 
 <div align="right">
-    {{ link_to("products/new", "Create Products", "class": "btn btn-primary") }}
+    {{ link_to("products/new", "添加店铺", "class": "btn btn-primary") }}
 </div>
 
 {{ form("products/search") }}
 
-<h2>Search products</h2>
+<h2>搜索店铺</h2>
 
 <fieldset>
 

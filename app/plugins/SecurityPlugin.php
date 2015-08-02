@@ -27,6 +27,7 @@ class SecurityPlugin extends Plugin
 		//throw new \Exception("something");
 
 		if (!isset($this->persistent->acl)) {
+			
 
 			$acl = new AclList();
 
@@ -37,18 +38,21 @@ class SecurityPlugin extends Plugin
 				'users'  => new Role('Users'),
 				'guests' => new Role('Guests')
 			);
+			
 			foreach ($roles as $role) {
 				$acl->addRole($role);
 			}
-
+			
 			//Private area resources
 			$privateResources = array(
 				'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
 				'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
 				'infos'			=> array('new', 'edit', 'save', 'create', 'delete'),
 				'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-				'invoices'     => array('index', 'profile')
+				'invoices'     => array('index', 'profile','changeimage'),
+				'activity'     =>array('index','add','area','map')
 			);
+			
 			foreach ($privateResources as $resource => $actions) {
 				$acl->addResource(new Resource($resource), $actions);
 			}
@@ -57,16 +61,17 @@ class SecurityPlugin extends Plugin
 			$publicResources = array(
 				'index'      => array('index','list','map'),
 				'about'      => array('index'),
-				'register'   => array('index'),
+				'register'   => array('index','sendemail','verifyemail','register'),
 				'infos'		=> array('index'),
 				'errors'     => array('show401', 'show404', 'show500'),
 				'session'    => array('index', 'register', 'start', 'end'),
 				'contact'    => array('index', 'send')
 			);
+			
 			foreach ($publicResources as $resource => $actions) {
 				$acl->addResource(new Resource($resource), $actions);
 			}
-
+			
 			//Grant access to public areas to both users and guests
 			foreach ($roles as $role) {
 				foreach ($publicResources as $resource => $actions) {
@@ -85,8 +90,9 @@ class SecurityPlugin extends Plugin
 
 			//The acl is stored in session, APC would be useful here too
 			$this->persistent->acl = $acl;
+			
 		}
-
+		
 		return $this->persistent->acl;
 	}
 
@@ -109,15 +115,22 @@ class SecurityPlugin extends Plugin
 		$controller = $dispatcher->getControllerName();
 		$action = $dispatcher->getActionName();
 
-		$acl = $this->getAcl();
+		$acl = $this->getAcl();	
+			
 
 		$allowed = $acl->isAllowed($role, $controller, $action);
+		
 		if ($allowed != Acl::ALLOW) {
+			$this->flash->error("请先登录！");
 			$dispatcher->forward(array(
+				'controller' => 'index',
+				'action'     => 'index'
+			));				
+/* 			$dispatcher->forward(array(
 				'controller' => 'errors',
 				'action'     => 'show401'
-			));
-                        $this->session->destroy();
+			)); */
+            $this->session->destroy();
 			return false;
 		}
 	}

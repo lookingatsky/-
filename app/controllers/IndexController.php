@@ -1,6 +1,7 @@
 <?php
 use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Paginator\Adapter\Model as Paginator;
+/* include_once('../app/plugins/viconMail.php');  */
 
 class IndexController extends ControllerBase
 {
@@ -8,15 +9,23 @@ class IndexController extends ControllerBase
     {
         $this->tag->setTitle('Welcome');
         parent::initialize();
+		
+		
     }
 
     public function indexAction()
     {	
         if (!$this->request->isPost()){
-            $this->flash->notice('欢迎来到维肯小屋');
+			if($this->session->get('action')){
+			}else{
+				$this->flash->notice('欢迎来到维肯小屋');
+				$this->session->set('action',array(
+				'time' => time() 
+			));
+			};
+           
         }	
 	}
-    
 	
 	//搜索结果信息列表
 	public function listAction($id=1)
@@ -44,7 +53,6 @@ class IndexController extends ControllerBase
 					if(!isset($isInsert->uid) || $isInsert->uid == ''){
 						foreach($val as $key1 => $val1){
 							if(!is_array($val1)){
-								fb($val1);	
 								$insertInfo->$key1 = $val1;	
 							}elseif($key1 == 'detail_info'){
 								foreach($val1 as $key1_1 => $val1_1){

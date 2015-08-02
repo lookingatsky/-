@@ -43,14 +43,14 @@ class ProductsController extends ControllerBase
             $parameters = $this->persistent->searchParams;
         }
 
-        $products = Products::find($parameters);
-        if (count($products) == 0) {
+        $BaiduApiInfos = BaiduApiInfo::find($parameters);
+        if (count($BaiduApiInfos) == 0) {
             $this->flash->notice("The search did not find any products");
             return $this->forward("products/index");
         }
 
         $paginator = new Paginator(array(
-            "data"  => $products,
+            "data"  => $BaiduApiInfos,
             "limit" => 5,
             "page"  => $numberPage
         ));	
@@ -73,13 +73,13 @@ class ProductsController extends ControllerBase
     {
         if (!$this->request->isPost()) {
 
-            $product = Products::findFirstById($id);
-            if (!$product) {
-                $this->flash->error("Product was not found");
+            $BaiduApiInfos = BaiduApiInfo::findFirstById($id);
+            if (!$BaiduApiInfos) {
+                $this->flash->error("没有对应记录");
                 return $this->forward("products/index");
             }
 
-            $this->view->form = new ProductsForm($product, array('edit' => true));
+            $this->view->form = new ProductsForm($BaiduApiInfos, array('edit' => true));
         }
     }
 
@@ -183,4 +183,14 @@ class ProductsController extends ControllerBase
         $this->flash->success("Product was deleted");
         return $this->forward("products/index");
     }
+	
+	public function changelocationAction(){
+		$this->view->disable();
+		$infoId = $this->request->getPost('id');
+		$infos = BaiduApiInfo::findFirst($infoId);
+		
+		$infos->location_lng = $this->request->getPost('lng');
+		$infos->location_lat = $this->request->getPost('lat');
+		$infos->save();
+	}	
 }

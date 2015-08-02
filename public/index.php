@@ -7,10 +7,10 @@ use Phalcon\Config\Adapter\Ini as ConfigIni;
 //$_GET['_url'] = '/contact/send';
 //$_SERVER['REQUEST_METHOD'] = 'POST';
 include_once('./FirePHP/fb.php');
-fb(1111);
 try {
 
 	define('APP_PATH', realpath('..') . '/');
+	define('LOGS_PATH', realpath('..') . '/logs/');
 
 	/**
 	 * Read the configuration
@@ -26,11 +26,10 @@ try {
 	 * Load application services
 	 */
 	require APP_PATH . 'app/config/services.php';
-
 	$application = new Application($di);
-
+	
 	echo $application->handle()->getContent();
-
+	
 } catch (Exception $e){
 	echo $e->getMessage();
 }

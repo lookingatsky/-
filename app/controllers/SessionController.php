@@ -9,15 +9,15 @@ class SessionController extends ControllerBase
 {
     public function initialize()
     {
-        $this->tag->setTitle('Sign Up/Sign In');
+        $this->tag->setTitle('登录/注册');
         parent::initialize();
     }
 
     public function indexAction()
     {
         if (!$this->request->isPost()) {
-            $this->tag->setDefault('email', 'demo@phalconphp.com');
-            $this->tag->setDefault('password', 'phalcon');
+            $this->tag->setDefault('email', '请输入邮箱');
+            $this->tag->setDefault('password', '');
         }
     }
 
@@ -30,7 +30,9 @@ class SessionController extends ControllerBase
     {
         $this->session->set('auth', array(
             'id' => $user->id,
-            'name' => $user->name
+            'email' => $user->email,
+            'active' => $user->active,
+            'username' => $user->username
         ));
     }
 
@@ -49,13 +51,14 @@ class SessionController extends ControllerBase
                 "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
                 'bind' => array('email' => $email, 'password' => sha1($password))
             ));
+			
             if ($user != false) {
                 $this->_registerSession($user);
-                $this->flash->success('Welcome ' . $user->name);
+                $this->flash->success('欢迎您！' . $user->username);
                 return $this->forward('invoices/index');
             }
 
-            $this->flash->error('Wrong email/password');
+            $this->flash->error('错误的帐号密码');
         }
 
         return $this->forward('session/index');
@@ -69,7 +72,7 @@ class SessionController extends ControllerBase
     public function endAction()
     {
         $this->session->remove('auth');
-        $this->flash->success('Goodbye!');
+        $this->flash->success('再见!');
         return $this->forward('index/index');
     }
 }

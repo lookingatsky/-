@@ -2,6 +2,7 @@
 
 use Phalcon\Forms\Form;
 use Phalcon\Forms\Element\Text;
+use Phalcon\Forms\Element\Textarea;
 use Phalcon\Forms\Element\Hidden;
 use Phalcon\Forms\Element\Select;
 use Phalcon\Validation\Validator\PresenceOf;
@@ -24,17 +25,57 @@ class ProductsForm extends Form
             $this->add(new Hidden("id"));
         }
 
-        $name = new Text("name");
+/*         $name = new Text("name");
         $name->setLabel("Name");
         $name->setFilters(array('striptags', 'string'));
         $name->addValidators(array(
             new PresenceOf(array(
-                'message' => 'Name is required'
+                'message' => '请输入标题'
+            ))
+        ));
+        $this->add($name); */
+
+        $name = new Text("name");
+        $name->setLabel("标题");
+        $name->setFilters(array('striptags', 'string'));
+        $name->addValidators(array(
+            new PresenceOf(array(
+                'message' => '请输入标题'
             ))
         ));
         $this->add($name);
 
-        $type = new Select('product_types_id', ProductTypes::find(), array(
+        $address = new Textarea("address");
+        $address->setLabel("地址");
+        $address->setFilters(array('striptags', 'string'));
+        $address->addValidators(array(
+            new PresenceOf(array(
+                'message' => '请输入地址'
+            ))
+        ));
+        $this->add($address);		
+		
+        $telephone = new Text("telephone");
+        $telephone->setLabel("电话");
+        $telephone->setFilters(array('striptags', 'string'));
+        $telephone->addValidators(array(
+            new PresenceOf(array(
+                'message' => '请输入电话'
+            ))
+        ));
+        $this->add($telephone);		
+		
+        $tag = new Text("tag");
+        $tag->setLabel("类别");
+        $tag->setFilters(array('striptags', 'string'));
+        $tag->addValidators(array(
+            new PresenceOf(array(
+                'message' => '请输入类别'
+            ))
+        ));
+        $this->add($tag);		
+		
+/*         $type = new Select('product_types_id', ProductTypes::find(), array(
             'using'      => array('id', 'name'),
             'useEmpty'   => true,
             'emptyText'  => '...',
@@ -42,8 +83,7 @@ class ProductsForm extends Form
         ));
         $type->setLabel('Type');
         $this->add($type);
-
-        $price = new Text("price");
+		
         $price->setLabel("Price");
         $price->setFilters(array('float'));
         $price->addValidators(array(
@@ -54,6 +94,6 @@ class ProductsForm extends Form
                 'message' => 'Price is required'
             ))
         ));
-        $this->add($price);
+        $this->add($price); */
     }
 }
