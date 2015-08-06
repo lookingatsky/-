@@ -38,9 +38,9 @@ class Elements extends Component
     );
 
     private $_tabs = array(
-        '清单' => array(
+        '账户信息' => array(
             'controller' => 'invoices',
-            'action' => 'index',
+            'action' => 'profile',
             'any' => false
         ),
         '公司' => array(
@@ -48,21 +48,22 @@ class Elements extends Component
             'action' => 'index',
             'any' => true
         ),
-        '产品' => array(
+        '店铺' => array(
             'controller' => 'products',
             'action' => 'search',
             'any' => true
         ),
-        '产品类型' => array(
+        '店铺类型' => array(
             'controller' => 'producttypes',
             'action' => 'index',
             'any' => true
-        ),
-        '账户信息' => array(
+        ),		
+        '清单' => array(
             'controller' => 'invoices',
-            'action' => 'profile',
+            'action' => 'index',
             'any' => false
-        )	
+        )
+
     );
 
     /**

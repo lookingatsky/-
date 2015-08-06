@@ -32,10 +32,10 @@
         <tr>
             <td colspan="4" align="right">
                 <div class="btn-group">
-                    {{ link_to("producttypes/search", '<i class="icon-fast-backward"></i> First', "class": "btn") }}
-                    {{ link_to("producttypes/search?page=" ~ page.before, '<i class="icon-step-backward"></i> Previous', "class": "btn") }}
-                    {{ link_to("producttypes/search?page=" ~ page.next, '<i class="icon-step-forward"></i> Next', "class": "btn") }}
-                    {{ link_to("producttypes/search?page=" ~ page.last, '<i class="icon-fast-forward"></i> Last', "class": "btn") }}
+                    {{ link_to("producttypes/search", '<i class="icon-fast-backward"></i> 首页', "class": "btn") }}
+                    {{ link_to("producttypes/search?page=" ~ page.before, '<i class="icon-step-backward"></i> 上一页', "class": "btn") }}
+                    {{ link_to("producttypes/search?page=" ~ page.next, '<i class="icon-step-forward"></i> 下一页', "class": "btn") }}
+                    {{ link_to("producttypes/search?page=" ~ page.last, '<i class="icon-fast-forward"></i> 尾页', "class": "btn") }}
                     <span class="help-inline">{{ page.current }}/{{ page.total_pages }}</span>
                 </div>
             </td>

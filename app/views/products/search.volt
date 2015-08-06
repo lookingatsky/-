@@ -1,9 +1,9 @@
 {{ content() }}
 
 <ul class="pager">
-<!--     <li class="previous">
-        {{ link_to("products", "&larr; 返回") }}
-    </li> -->
+    <li class="previous">
+        我的店铺列表
+    </li>
     <li class="next">
         {{ link_to("products/new", "创建店铺") }}
     </li>
@@ -25,7 +25,7 @@
 <table class="table table-bordered table-striped" align="center">
     <thead>
         <tr>
-            <th>序号</th>
+            <th width="70">序号</th>
             <th>标题</th>
             <th>地址</th>
             <th>电话</th>

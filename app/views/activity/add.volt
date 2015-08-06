@@ -7,13 +7,14 @@
 {{ javascript_include('js/simditor/hotkeys.js') }}	
 {{ javascript_include('js/simditor/simditor.js') }}
 
+<!--引入时间选择器-->
+{{ stylesheet_link('css/bootstrap-datetimepicker.min.css') }}	
+{{ javascript_include('js/bootstrap-datetimepicker.js') }}	
 
 {{ form("activity/add") }}
-    <div class="input-append date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-        <input class="span2" size="16" type="text" value="12-02-2012">
-        <span class="add-on"><i class="icon-remove"></i></span>
-        <span class="add-on"><i class="icon-th"></i></span>
-    </div>    
+
+
+
 	
     <ul class="pager">
         <li class="previous pull-left">
@@ -23,6 +24,16 @@
             {{ submit_button("保 存", "class": "btn btn-success") }}
         </li>
     </ul>	
+<div class="form-group">
+	<label for="dtp_input1">选择时间</label>
+<br />
+	<div class="input-group date form_datetime col-md-5" data-date="2015-08-05T00:00:00Z" data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1">
+		<input class="form-control" size="16" type="text" value="" readonly>
+		<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+		<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+	</div>
+	<input type="hidden" id="dtp_input1" value="" />
+</div> 
 	
 	<div class="form-group">
 		<label for="title">选择省市</label><br />
@@ -43,7 +54,7 @@
 	width:200px;
 	display:none;
 	float:left;
-	margin-left:20px;
+	margin-left:5px;
 }
 .clear{
 	clear:both;
@@ -73,32 +84,21 @@
 	height:50px;	
 }
 </style>
-<!--
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=u3wn5UIKKoI8TUDUhbtb1I0E"></script>
-<div id="milkMap" style="width:400px;height:300px;"></div>
-<script type="text/javascript">
-// 创建地图实例
-var map = new BMap.Map("milkMap");          
-// 创建点坐标
-var point = new BMap.Point(116.330599,39.95536);  
-// 初始化地图，设置中心点坐标和地图级别                
-map.centerAndZoom("北京",13);
-// 创建标注
-var marker = new BMap.Marker(point); 
-// 将标注添加到地图中         
-map.addOverlay(marker);                     
-marker.enableDragging();
-var infoWindow = new BMap.InfoWindow("<p><a target='_blank' title='粟摄影' alt='粟摄影' href='http://www.ui-love.com/su/'><img src='http://ui-love.com/static/img/subslogan.jpg' /></a></p><p style='font-size:12px;'>欢迎光临<b>粟摄影</b>的官方网站>></p><p style='font-size:12px;'>电话:010-8888 6666</p><p style='font-size:12px;'>地址:北京市海淀区XX门XX街道XXX村子</p>");  // 创建信息窗口对象
-marker.addEventListener("click", function(){  
-//给标注添加点击事件      
-this.openInfoWindow(infoWindow);
-});
-</script>
--->
-
 <!---->
 
 <script>
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+		language:  'zh-CN',
+		format: 'yyyy-mm-dd hh:ii',
+        weekStart: 7,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
 $(function(){
 	var editor = new Simditor({
 		textarea: $('#arrangement'),
@@ -158,6 +158,8 @@ $(function(){
 	})
 })	
 </script>
+
+
 
     <fieldset>
 

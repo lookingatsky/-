@@ -34,7 +34,7 @@ class ActivityForm extends Form
         ));
         $this->add($title);
 
-        $address = new Textarea("address");
+        $address = new Text("address");
         $address->setLabel("地址");
         $address->setFilters(array('striptags', 'string'));
         $address->addValidators(array(

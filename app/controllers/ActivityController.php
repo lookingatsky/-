@@ -29,6 +29,64 @@ class ActivityController extends ControllerBase
 		$this->view->form = new ActivityForm(null, array('edit' => true));
 		$this->view->setVar('provinces',CityArea1::find());
 	}
+		
+	public function listAction($id){
+		if(!$id){
+       $numberPage = 1;
+        if ($this->request->isPost()) {
+			
+        } else {
+            $numberPage = $this->request->getQuery("page", "int");
+        }
+
+/*         $parameters = array();
+        if ($this->persistent->searchParams) {
+            $parameters = $this->persistent->searchParams;
+        }
+ */
+		
+        $Activities = Activity::find("info_id = '".$id."'");
+        if (count($Activities) == 0) {
+            $this->flash->notice("这家店铺还木有做活动！");
+        }
+
+        $paginator = new Paginator(array(
+            "data"  => $Activities,
+            "limit" => 10,
+            "page"  => $numberPage
+        ));	
+		
+        $this->view->page = $paginator->getPaginate();			
+		}			
+	}
+	
+	public function saveAction(){
+        if (!$this->request->isPost()) {
+           
+        }
+        $form = new ProductsForm;
+        $activity = new Activity();
+
+        $data = $this->request->getPost();
+        if (!$form->isValid($data, $activity)) {
+            foreach ($form->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+            return $this->forward('activity/list');
+        }
+
+        if ($activity->save() == false) {
+            foreach ($activity->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+            return $this->forward('products/new');
+        }
+
+        $form->clear();
+
+        $this->flash->success("活动保存成功");
+        return $this->forward("products/index");		
+	}
 	
 	public function mapAction($params){
 		$this->view->cleanTemplateAfter('main');
