@@ -33,7 +33,7 @@ class NotFoundPlugin extends Plugin
 					return false;
 			}
 		}
-
+		fb($exception);
 		$dispatcher->forward(array(
 			'controller' => 'errors',
 			'action'     => 'show500'
